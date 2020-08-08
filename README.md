@@ -4,7 +4,7 @@ This repository is for the vagrant instances of VulnHub machines.
 Prior to executing any of the vagrant deployments, ensure that you create an internal network, named "haymarketers." The IP range can be whatever you desire, but the name is set to "haymarketers."
 
 For reference, you can set the internal network via the VBoxManage utility.
-  EX: vboxmanage dhcpserver add --netname haymarketers --ip 10.10.10.1 --netmask 255.255.255.0 --lowerip 10.10.10.5 --upperip 10.10.10.254 --enable 
+  EX: vboxmanage dhcpserver add --netname haymarketers --ip 10.13.37.1 --netmask 255.255.255.0 --lowerip 10.13.37.5 --upperip 10.13.37.254 --enable 
 
 TO DO: Add scripts to assist with above network creation.
 
