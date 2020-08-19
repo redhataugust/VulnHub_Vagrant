@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/pwned-1,507/ 
 
 About Release:
-    Name: sunset: Pwned: 1
+    Name: Pwned: 1
     Date release: 10 Jul 2020
     Author: Ajs Walker
     Series: Pwned

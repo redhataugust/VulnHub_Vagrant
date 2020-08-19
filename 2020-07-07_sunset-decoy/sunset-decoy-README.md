@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/sunset-decoy,505/ 
 
 About Release:
-    Name: sunset: sunset: decoy
+    Name: sunset: decoy
     Date release: 07 Jul 2020
     Author: whitecr0wz
     Series: sunset

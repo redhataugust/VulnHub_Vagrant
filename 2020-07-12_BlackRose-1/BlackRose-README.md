@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/blackrose-1,509/ 
 
 About Release:
-    Name: sunset: BlackRose: 1
+    Name: BlackRose: 1
     Date release: 12 Jul 2020
     Author: BadLamer
     Series: BlackRose

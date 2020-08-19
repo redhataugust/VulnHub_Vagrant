@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/investigator-1,504/ 
 
 About Release:
-    Name: sunset: Investigator: 1
+    Name: Investigator: 1
     Date release: 04 Jul 2020
     Author: Sivanesh Kumar
     Series: Investigator

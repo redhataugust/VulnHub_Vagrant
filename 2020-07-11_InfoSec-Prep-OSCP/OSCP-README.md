@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/infosec-prep-oscp,508/
 
 About Release:
-    Name: sunset: InfoSec Prep: OSCP
+    Name: InfoSec Prep: OSCP
     Date release: 11 Jul 2020
     Author: FalconSpy
     Series: InfoSec Prep

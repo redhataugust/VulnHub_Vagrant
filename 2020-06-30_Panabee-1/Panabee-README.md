@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/panabee-1,502/ 
 
 About Release:
-    Name: sunset: Panabee: 1
+    Name: Panabee: 1
     Date release: 30 Jun 2020
     Author: ch4rm
     Series: Panabee

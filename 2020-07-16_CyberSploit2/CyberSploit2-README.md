@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/cybersploit-2,511/
 
 About Release:
-    Name: sunset: CyberSploit: 2
+    Name: CyberSploit: 2
     Date release: 16 Jul 2020
     Author: CyberSploit
     Series: CyberSploit

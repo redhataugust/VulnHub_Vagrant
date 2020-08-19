@@ -1,7 +1,7 @@
 Taken from https://www.vulnhub.com/entry/greenoptic-1,510/
 
 About Release:
-    Name: sunset: GreenOptic: 1
+    Name: GreenOptic: 1
     Date release: 13 Jul 2020
     Author: Thomas Williams
     Series: GreenOptic
