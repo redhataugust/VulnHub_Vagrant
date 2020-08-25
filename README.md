@@ -14,7 +14,7 @@ After vagrant up is run, press CTRL-C to stop the ssh (this will not - and for t
 
 *Disclaimers:
   - I do not take credit for the creation of the original machines. The respective author of the exploitable machine will be given proper credit in the README of each machine.
-  - Use these VMs at your own risk. If there are any concerns about malicious activities from any machine, I advise to create the internal network as described above. I, VulnHub, and the author of the vulnerable machines bear know responsibility for any damages or difficulties resulting from use of these resources. Use at your own risk.
+  - Use these VMs at your own risk. If there are any concerns about malicious activities from any machine, I advise to create the internal network as described above. I, VulnHub, and the author of the vulnerable machines bear no responsibility for any damages or difficulties resulting from use of these resources. Use at your own risk.
 
 Have fun and learn a lot. :-D
 
