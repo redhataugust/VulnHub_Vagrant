@@ -1,6 +1,11 @@
 # VulnHub_Vagrant
 This repository is for the vagrant instances of VulnHub machines.
 
+Before beginning to use this repo, please ensure that you have the following packages installed:
+  - VirtualBox
+  - VirtualBox Extension Pack (located in the middle of the Downloads page)
+  - Vagrant
+
 Prior to executing any of the vagrant deployments, ensure that you create an internal network, named "haymarketers." The IP range can be whatever you desire, but the name is set to "haymarketers."
 
 For reference, you can set the internal network via the VBoxManage utility.
