@@ -19,4 +19,4 @@ RedHatAugust Notes:
     =============
     This product is for the Armour Infosec and Infosec Warrior platform only. Using this entity out side the permission without consultion is an criminal offence. And legal action may be taken.  
     =============
-    The author has not responded regarding permission for use.
+    The author responded giving blanket permission for use.
