@@ -11,5 +11,6 @@ Description:
     Tested on Virtualbox.
     For any queries/feedback ping me at Twitter: @time4ster
     This works better with VirtualBox rather than VMware 
+    This works better with VirtualBox rather than VMware ## Changelog 2021-05-10 - v1.0.2 - File upload issue 2021-05-02 - v1.0.1 - IP issue 2021-04-28 - v1.0.0 
 
 Vagrant box made by RedHatAugust
