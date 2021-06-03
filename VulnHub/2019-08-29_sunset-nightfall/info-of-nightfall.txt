@@ -1,0 +1,6 @@
+Author:whitecr0wz
+Series:sunset
+Name of the VM:nightfall
+Image of the box (if possible):image-for-nightfall.png
+Description:nightfall is a born2root VM designed for beginners. Virtualbox is strongly recommended for doing this challenge. 
+If you need to contact me for hints you can do it via twitter here:@whitecr0w1
