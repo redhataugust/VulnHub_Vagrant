@@ -13,4 +13,4 @@ Description:
 
 Vagrant box made by RedHatAugust
 RedHatAugust Notes:
-    I was not able to get this machine to work. Reached out to the machine author and am waiting on a response.
+    Add www.midwest.htb to hosts file
