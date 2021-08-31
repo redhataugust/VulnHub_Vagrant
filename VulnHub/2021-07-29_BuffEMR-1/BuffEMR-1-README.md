@@ -11,5 +11,3 @@ Description:
     This works better with VirtualBox rather than VMware. 
 
 Vagrant box made by RedHatAugust
-RedHatAugust Notes:
-    This machine does not work at this time. The author has been reached out to for a fix.
