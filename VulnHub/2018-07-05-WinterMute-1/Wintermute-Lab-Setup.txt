@@ -1,0 +1,40 @@
+Wintermute Vitrual Box Setup Guide
+
+This lab makes use of pivoting, so the VirtualBox networks need to be setup correctly. It's quick and easy with all dynamic ips.
+run or Import each machine into Virtual Box ( File >> Import Applicance )
+
+---------------------------------------------------------------------------------------------------------------------------
+
+STRAYLIGHT (Network #1 & #2)
+-This is the first machine to get root. Setup to be dual-homed/2 NIC's.
+-Adapter 1 
+	- Host-only Adapter
+	- VirtualBox Host-Only Ethernet Adapter #1
+	Advanced (we want 2 NIC's, each on a separate network)
+	- Adapter Type - Intel PRO/1000 T Server 
+-Adapter 2
+	- Host-only Adapter
+	- VirtualBox Host-Only Ethernet Adapter #2
+	Advanced
+	- Adapter Type - Intel PRO/1000 MT Desktop (or other adapter type different than network #1).
+
+---------------------------------------------------------------------------------------------------------------------------
+
+NEUROMANCER (Network #2)
+-This is the final machine to get root. Setup to have 1 network. Only accessed via Straylight, using Host-Only Eth adapter #2.
+-Adapter 1
+	- Host-only Adapter
+	- VirtualBox Host-Only Ethernet Adapter #2
+	Advanced
+	- Adapter Type - Intel PRO/1000 MT Desktop
+
+---------------------------------------------------------------------------------------------------------------------------
+
+KALI (Network #1)
+- Your attacking machine should only be setup on the Host-Only adpater Straylight is on...and NAT if you choose.
+- You should not be able to ping Neuromancer from your Kali box. If you can, you are cheating.
+- Adapter 1
+	- Host-only Adapter
+	- VirtualBox Host-Only Ethernet Adapter #1
+
+---------------------------------------------------------------------------------------------------------------------------
