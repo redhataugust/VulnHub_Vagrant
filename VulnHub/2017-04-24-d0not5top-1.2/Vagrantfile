@@ -1,0 +1,6 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "RedHatAugust/d0not5top-1.2"
+  config.vm.base_mac = "08002758A4C4"
+  config.vm.network "private_network", type: "dhcp", virtualbox__intnet: "haymarketers", adapter: "1"
+  config.vm.network "private_network", type: "dhcp", virtualbox__intnet: "this_should_not_exist_and_is_only_a_filler", adapter: "2"
+end
