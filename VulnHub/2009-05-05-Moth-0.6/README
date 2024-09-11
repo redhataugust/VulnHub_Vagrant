@@ -1,0 +1,581 @@
+About moth
+==========
+
+Moth is a VMware image with a set of vulnerable Web Applications, that you may use for:
+    - Testing Web Application Security Scanners
+    - Testing Static Code Analysis tools (SCA)
+    - Giving an introductory course to Web Application Security
+
+The motivation for creating this image came after reading "anantasec-report.pdf" which is included
+in this release ("anantasec/anantasec-report.pdf"). The main objective of this vmware image is to
+be able to test the w3af - Web Application Attack and Audit Framework and compare it with the
+commercial tools included in the report.
+
+Other tools like this are available (securibench to name one) but they lack one very important
+feature: a list of vulnerabilities that are included in the Web Applications! In our case, we use
+the results gathered in the anantasec report as our list of Web Application Vulnerabilities included
+ in the release.
+
+For most of the web applications there are three different ways to access them:
+    - Directly
+    - Through mod_security
+    - Through PHP-IDS
+
+Both mod_security and PHP-IDS have their default configurations and they show a log of the offending
+request when one is found. This is very useful for testing web application scanners, and teaching
+students how web application firewalls work. The beauty is that a user may access a vulnerable
+script directly using [0], then access the same script using mod_security [1] and finally try to
+trigger the same vulnerability through PHP-IDS [2].
+
+[0] http://moth/w3af/audit/xss/simple_xss.php?text=<script>alert('xss');</script>
+[1] http://moth/mod_security/w3af/audit/xss/simple_xss.php?text=<script>alert('xss');</script>
+[2] http://moth/php-ids/w3af/audit/xss/simple_xss.php?text=<script>alert('xss');</script>
+
+User/Password
+=============
+
+The credentials to login inside this VMWare are moth/moth. Once logged in, you can get root
+privileges by issuing "sudo -s -H" in the console and entering "moth" again as password.
+
+Installed software
+==================
+
+    - Vulnerable Web Applications
+
+        The installers for the vulnerable Web Applications can be found in the "vulnerable-software" 
+        directory, and of course they are also installed and running inside the VMWare image. The 
+        following is the list of successfully installed software:
+
+            * nanbiquara2.0.zip             PHP + MySQL
+            * riotpix0_61.zip               PHP + MySQL
+            * Vanilla-1.1.4.zip             PHP + MySQL
+            * wordpress-2.6.5.zip           PHP + MySQL
+            * yazd_war_3_0.tar              Tomcat6 + MySQL
+
+        This is the list of software that we've been trying to install but failed for some reason:
+
+            * pebble-2.3.1.zip              @why: Java Null Pointer Exception in Tomcat log.
+            * TriptychBlog_v.9.0.1[src].zip @why: May need to install MDB support.
+
+        We still need to work on some more installations, (mostly ASP.NET applications), if you
+        want to help, please drop me a line to andres.riancho@gmail.com .
+
+    - w3af test scripts
+
+        Inside this release we also include the w3af test scripts which were developed for the 
+        framework in order to perform self-tests. These scripts aren't ment to look like an 
+        application, they are just vulnerable scripts used for testing.
+
+    - wivet
+
+        WIVET [0] is a benchmarking project that aims to statistically analyze web link extractors.
+        In general, web application vulnerability scanners fall into this category. These VAs, given
+        a URL(s), try to extract as many input vectors as possibly they can to increase the coverage
+        of the attack surface.
+
+        [0] http://code.google.com/p/wivet/
+
+
+HOWTO access the Web Vulnerable Applications
+============================================
+
+Moth is configured to get an IP address from a DHCP server, you should configure your vmware
+host acordingly. Once you've booted your moth installation, login with the credentials supplied
+above, and issue the "ifconfig" command. After that, please browse to "http://<moth-ip-address>/".
+
+You'll be presented with a list of links and descriptions for each vulnerable Web Application,
+just click over the link to get there.
+
+
+Future plans and TODO
+=====================
+
+We plan to keep this virtual machine updated by checking milw0rm [0] and installing new vulnerable
+Web Applications to the virtual machine. We are interested in adding Web Applications running in
+Ruby and Python, if you want to contribute, contact us at the w3af-develop mailing list!
+
+[0] http://www.milw0rm.com/webapps.php
+
+Server
+======
+
+Moth is based on Ubuntu Server 8.10, with the following goodies installed:
+
+    * Apache/2.2.9 (Ubuntu) mod_mono/1.9 PHP/5.2.6-2ubuntu4
+    * Tomcat 6
+
+Both packages were installed from the Ubuntu packages, their configurations were kept by default.
+Minimal changes applied to configurations:
+
+    * Enabled the mod_mono in Apache
+    * Disabled security policy in Tomcat by adding "permission java.security.AllPermission;" to
+      "/etc/tomcat6/policy.d/04webapps.policy".
+
+HOWTO get a small package
+=========================
+
+Before compressing, in the virtual machine run this command:
+    sh /root/package.sh
+
+Which performs some tasks like removing SVN passwords, and filling the free space with
+zeros, to increase the compression ratio.
+	cat /dev/zero > zero.fill;sync;sleep 1;sync;rm -f zero.fill
+
+After that, to compress your image use 7zip, it's better than bzip2:
+	7zr a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on moth.7z moth/
+
+Project Leader
+==============
+
+Andrés Riancho  -   <andres.riancho@gmail.com>
+
+
+BUGs
+====
+
+Please report bugs to the w3af project sourceforge bug tracking system:
+
+    https://sourceforge.net/tracker2/?group_id=170274&atid=853652
+
+
+Complete list of installed software
+===================================
+(this is the last section of the document)
+
+adduser
+apache2
+apache2-mpm-prefork
+apache2-prefork-dev
+apache2-utils
+apache2.2-common
+apt
+apt-utils
+autotools-dev
+base-files
+base-passwd
+bash
+belocs-locales-bin
+bind9
+bind9-host
+bind9utils
+binfmt-support
+binutils
+bridge-utils
+bsdutils
+build-essential
+busybox-initramfs
+bzip2
+ca-certificates
+ca-certificates-java
+cli-common
+comerr-dev
+console-setup
+console-terminus
+consolekit
+coreutils
+cpio
+cpp
+cpp-4.3
+cron
+dash
+dbus
+dbus-x11
+debconf
+debconf-i18n
+debianutils
+default-jre-headless
+defoma
+dhcp3-client
+dhcp3-common
+dhcp3-server
+diff
+dmidecode
+dmsetup
+dnsmasq-base
+dnsutils
+dpkg
+dpkg-dev
+e2fslibs
+e2fsprogs
+eject
+file
+findutils
+fontconfig-config
+freetds-common
+g++
+g++-4.3
+gcc
+gcc-4.3
+gcc-4.3-base
+gcj-4.3-base
+gnupg
+gpgv
+grep
+grub
+gzip
+hostname
+ifupdown
+initramfs-tools
+initscripts
+installation-report
+iproute
+iptables
+iputils-ping
+irb1.8
+java-common
+joe
+jsvc
+kbd
+klibc-utils
+klogd
+kvm
+landscape-common
+laptop-detect
+less
+libaccess-bridge-java
+libacl1
+libapache2-mod-jk
+libapache2-mod-mono
+libapache2-mod-passenger
+libapache2-mod-php5
+libapache2-mod-python
+libapr1
+libapr1-dev
+libaprutil1
+libaprutil1-dev
+libasound2
+libatm1
+libattr1
+libavahi-client3
+libavahi-common-data
+libavahi-common3
+libbind9-40
+libblkid1
+libbz2-1.0
+libc6
+libc6-dev
+libc6-i686
+libcairo2
+libcap1
+libcap2
+libck-connector0
+libcomerr2
+libcommons-collections-java
+libcommons-daemon-java
+libcommons-dbcp-java
+libcommons-logging-java
+libcommons-pool-java
+libcompress-raw-zlib-perl
+libcompress-zlib-perl
+libct4
+libcups2
+libcurl3-gnutls
+libdb4.6
+libdb4.6-dev
+libdb4.7
+libdbd-mysql-perl
+libdbi-perl
+libdbus-1-3
+libdbus-glib-1-2
+libdevmapper1.02.1
+libdirectfb-1.0-0
+libdns43
+libecj-java
+libecj-java-gcj
+libedit2
+libexif12
+libexpat1
+libexpat1-dev
+libffi5
+libfont-afm-perl
+libfontconfig1
+libfreetype6
+libfribidi0
+libgcc1
+libgcj-bc
+libgcj-common
+libgcj9-0
+libgcj9-jar
+libgcrypt11
+libgda2-3
+libgda2-bin
+libgda2-common
+libgdbm3
+libgdiplus
+libgif4
+libglib2.0-0
+libglib2.0-data
+libglib2.0-dev
+libglibmm-2.4-1c2a
+libglibmm-2.4-dev
+libgmp3c2
+libgnutls26
+libgomp1
+libgpg-error0
+libhtml-format-perl
+libhtml-parser-perl
+libhtml-tagset-perl
+libhtml-tree-perl
+libidn11
+libio-compress-base-perl
+libio-compress-zlib-perl
+libisc44
+libisccc40
+libisccfg40
+libiw29
+libjpeg62
+libkadm55
+libkeyutils1
+libklibc
+libkrb5-dev
+libkrb53
+liblcms1
+libldap-2.4-2
+libldap2-dev
+liblocale-gettext-perl
+liblockfile1
+liblog4j1.2-java
+liblog4j1.2-java-gcj
+libltdl7
+libltdl7-dev
+liblua5.1-0
+liblua5.1-0-dev
+liblwres40
+libmagic1
+libmailtools-perl
+libmdbtools
+libmono-corlib1.0-cil
+libmono-corlib2.0-cil
+libmono-data-tds2.0-cil
+libmono-i18n1.0-cil
+libmono-i18n2.0-cil
+libmono-security2.0-cil
+libmono-sharpzip2.84-cil
+libmono-sqlite2.0-cil
+libmono-system-data2.0-cil
+libmono-system-web2.0-cil
+libmono-system2.0-cil
+libmono0
+libmono2.0-cil
+libmpfr1ldbl
+libmysql-java
+libmysql-ruby
+libmysql-ruby1.8
+libmysqlclient15-dev
+libmysqlclient15off
+libncurses5
+libncurses5-dev
+libncursesw5
+libneon27-gnutls
+libnet-daemon-perl
+libnewt0.52
+libopenssl-ruby1.8
+libpam-ck-connector
+libpam-modules
+libpam-runtime
+libpam0g
+libpcre3
+libpcre3-dev
+libpcrecpp0
+libpcsclite1
+libpixman-1-0
+libplrpc-perl
+libpng12-0
+libpolkit-dbus2
+libpolkit2
+libpopt0
+libpq-dev
+libpq5
+libreadline-ruby1.8
+libreadline5
+libreadline5-dev
+libruby1.8
+libsasl2-2
+libsasl2-modules
+libsdl1.2debian
+libsdl1.2debian-alsa
+libselinux1
+libsepol1
+libservlet2.3-java
+libservlet2.5-java
+libsigc++-2.0-0c2a
+libsigc++-2.0-dev
+libslang2
+libsqlite0
+libsqlite3-0
+libsqlite3-dev
+libsqlite3-ruby
+libsqlite3-ruby1.8
+libss2
+libssl-dev
+libssl0.9.8
+libstdc++6
+libstdc++6-4.3-dev
+libsvn1
+libsysfs2
+libtasn1-3
+libtext-charwidth-perl
+libtext-iconv-perl
+libtext-wrapi18n-perl
+libtiff4
+libtimedate-perl
+libtomcat6-java
+libtool
+libts-0.0-0
+liburi-perl
+libusb-0.1-4
+libuuid1
+libvirt-bin
+libvirt0
+libvolume-id0
+libwrap0
+libwww-perl
+libx11-6
+libx11-data
+libxau6
+libxcb-render-util0
+libxcb-render0
+libxcb-xlib0
+libxcb1
+libxdmcp6
+libxen3
+libxml++2.6-2
+libxml++2.6-dev
+libxml2
+libxml2-dev
+libxrender1
+libxslt1.1
+linux-firmware
+linux-image-2.6.27-11-virtual
+linux-image-2.6.27-7-virtual
+linux-image-virtual
+linux-libc-dev
+linux-virtual
+locales
+lockfile-progs
+login
+lsb-base
+lsb-release
+lvm2
+lzma
+make
+makedev
+mawk
+mdbtools
+mime-support
+mktemp
+module-init-tools
+mono-apache-server2
+mono-common
+mono-gac
+mono-gmcs
+mono-jit
+mono-runtime
+mono-xsp
+mono-xsp2-base
+mount
+mysql-client-5.0
+mysql-common
+mysql-server
+mysql-server-5.0
+ncurses-base
+ncurses-bin
+net-tools
+netbase
+netcat
+netcat-openbsd
+netcat-traditional
+ntpdate
+openjdk-6-jre-headless
+openjdk-6-jre-lib
+openssh-client
+openssh-server
+openssl
+openssl-blacklist
+passwd
+patch
+perl
+perl-base
+perl-modules
+php5-common
+php5-mysql
+pkg-config
+procps
+psmisc
+python
+python-apt
+python-central
+python-dbus
+python-gdbm
+python-gobject
+python-minimal
+python-openssl
+python-pam
+python-pyopenssl
+python-serial
+python-support
+python-twisted-bin
+python-twisted-core
+python-zopeinterface
+python2.5
+python2.5-minimal
+rdoc1.8
+readline-common
+rhino
+ri1.8
+ruby
+ruby1.8
+ruby1.8-dev
+rubygems
+rubygems1.8
+screen
+sed
+sqlite3
+ssl-cert
+startup-tasks
+subversion
+sudo
+sysklogd
+system-services
+sysv-rc
+sysvinit-utils
+tar
+tasksel
+tasksel-data
+tcpd
+tomcat6
+tomcat6-admin
+tomcat6-common
+tomcat6-docs
+tomcat6-examples
+ttf-dejavu
+ttf-dejavu-core
+ttf-dejavu-extra
+tzdata
+tzdata-java
+ubuntu-keyring
+ubuntu-minimal
+ubuntu-serverguide
+ubuntu-virt-server
+ucf
+udev
+unattended-upgrades
+unzip
+update-motd
+upstart
+upstart-compat-sysv
+upstart-logd
+usbutils
+util-linux
+uuid-dev
+uuid-runtime
+vim-common
+vim-tiny
+wget
+whiptail
+wireless-tools
+wpasupplicant
+xkb-data
+zlib1g
+zlib1g-dev
+
